@@ -363,7 +363,7 @@ class InversorGUI:
         
         # Controles de atualização
         atualizar_container = tk.Frame(monitor_frame, bg=self.cor_fundo_card)
-        atualizar_container.grid(row=1, column=0, columnspan=3, pady=20, sticky=tk.X)
+        atualizar_container.grid(row=1, column=0, columnspan=3, pady=20, sticky=(tk.W, tk.E))
         
         self.btn_atualizar = tk.Button(atualizar_container,
                                       text="🔄 ATUALIZAR AGORA",
