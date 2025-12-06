@@ -97,7 +97,7 @@ class InversorGUI:
                                     text="OFFLINE",
                                     font=('Segoe UI', 11, 'bold'),
                                     bg=self.cor_fundo_card,
-                                    fg=self.cor_offline)
+                                    fg='white')
         self.status_label.pack(side=tk.LEFT, padx=5)
         
         # ========== LINHA SUPERIOR: CONEXÃO E CONTROLE ==========
@@ -217,7 +217,7 @@ class InversorGUI:
                                           text="OFFLINE",
                                           font=('Segoe UI', 16, 'bold'),
                                           bg=self.cor_fundo_card,
-                                          fg=self.cor_offline)
+                                          fg='white')
         self.estado_motor_label.pack(side=tk.LEFT, padx=10)
         
         # ========== LINHA MÉDIA: CONFIGURAÇÃO ==========
@@ -521,10 +521,10 @@ class InversorGUI:
             self.conectado = False
             self.btn_conectar.config(text="CONECTAR", bg=self.cor_primaria, activebackground=self.cor_primaria_hover)
             self.status_indicator.config(fg=self.cor_offline)
-            self.status_label.config(text="OFFLINE", fg=self.cor_offline)
+            self.status_label.config(text="OFFLINE", fg='white')
             self.ip_entry.config(state=tk.NORMAL)
             self.habilitar_controles(False)
-            self.estado_motor_label.config(text="OFFLINE", fg=self.cor_offline)
+            self.estado_motor_label.config(text="OFFLINE", fg='white')
             self.log("Desconectado do inversor", "info")
             self.atualizando = False
             self.btn_auto_atualizar.config(text="▶ INICIAR MONITORAMENTO", bg=self.cor_sucesso, activebackground="#45A049")
