@@ -36,7 +36,23 @@ pip install umodbus==1.0.4
 
 ## Uso
 
-Execute o programa:
+### Interface Gráfica (Recomendado)
+
+Execute a interface gráfica:
+```bash
+python gui.py
+```
+
+A interface gráfica oferece:
+- Conexão visual com indicador de status
+- Controles intuitivos para todas as funcionalidades
+- Monitoramento em tempo real dos parâmetros do motor
+- Atualização automática dos dados
+- Log de operações
+
+### Interface de Linha de Comando
+
+Execute o programa em modo texto:
 ```bash
 python main.py
 ```
@@ -74,8 +90,9 @@ O programa solicitará o endereço IP do inversor. Após conectar, você terá a
 
 ```
 IoT-Pratica-Driver/
-├── main.py               # Código principal
-├── requirements.txt       # Dependências
+├── main.py               # Código principal (CLI)
+├── gui.py                # Interface gráfica
+├── requirements.txt      # Dependências
 └── README.md             # Documentação
 ```
 
