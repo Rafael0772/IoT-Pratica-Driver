@@ -11,8 +11,8 @@ from umodbus.client import tcp
 # CONFIGURAÇÕES
 # -----------------------------------------------------------
 
-IP = "192.168.0.1"   #IP do inversor real
-PORTA = 502
+IP = "192.168.0.1"   #IP do inversor
+PORTA = 502     # porta padrão ModBus TCP
 SLAVE = 2            # endereço escravo do PDF
 
 
@@ -51,7 +51,7 @@ REG_SETPOINT = 41400
 def ligar():
     sock = conectar()
     if sock:
-        tcp.write_single_register(sock, SLAVE, REG_LIGAR, 1)
+        tcp.write_single_register(sock, REG_LIGAR, 1)
         sock.close()
         print("✔ Motor ligado!")
 
@@ -59,7 +59,7 @@ def ligar():
 def parar():
     sock = conectar()
     if sock:
-        tcp.write_single_register(sock, SLAVE, REG_LIGAR, 0)
+        tcp.write_single_register(sock, REG_LIGAR, 0)
         sock.close()
         print("✔ Motor desligado!")
 
@@ -77,7 +77,7 @@ def set_sentido():
     
     sock = conectar()
     if sock:
-        tcp.write_single_register(sock, SLAVE, REG_SENTIDO, valor)
+        tcp.write_single_register(sock, REG_SENTIDO, valor)
         sock.close()
         print("✔ Sentido definido!")
 
@@ -94,7 +94,7 @@ def set_velocidade():
 
     sock = conectar()
     if sock:
-        tcp.write_single_register(sock, SLAVE, REG_SETPOINT, vel)
+        tcp.write_single_register(sock, REG_SETPOINT, vel)
         sock.close()
         print(f"✔ Velocidade definida para {vel} Hz")
 
@@ -106,7 +106,7 @@ def set_velocidade():
 def ler_reg(reg):
     sock = conectar()
     if sock:
-        valores = tcp.read_holding_registers(sock, SLAVE, reg, 1)
+        valores = tcp.read_holding_registers(sock, reg, 1)
         sock.close()
         return valores[0]
     return None
@@ -138,9 +138,9 @@ def config_padrao():
     
     sock = conectar()
     if sock:
-        tcp.write_single_register(sock, SLAVE, REG_SETPOINT, 30)
-        tcp.write_single_register(sock, SLAVE, REG_SENTIDO, 0)
-        tcp.write_single_register(sock, SLAVE, REG_LIGAR, 1)
+        tcp.write_single_register(sock, REG_SETPOINT, 30)
+        tcp.write_single_register(sock, REG_SENTIDO, 0)
+        tcp.write_single_register(sock, REG_LIGAR, 1)
         sock.close()
 
     print("✔ Configuração padrão aplicada!")
